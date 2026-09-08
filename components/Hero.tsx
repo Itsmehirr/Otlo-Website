@@ -118,7 +118,7 @@ export default function Hero() {
         </div>
 
         {/* floating "coming soon" card — transparent/glass, store badges */}
-        <div className="hidden sm:flex absolute bottom-8 right-8 z-20 flex-col items-center gap-3 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-5 py-4 shadow-lg">
+        <div className="hidden sm:flex absolute bottom-8 right-8 z-20 flex-col items-center gap-2.5 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-3 shadow-lg">
           <span className="rounded-pill bg-white/15 px-3 py-1 text-eyebrow uppercase tracking-widest text-cream">
             Coming Soon
           </span>

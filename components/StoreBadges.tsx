@@ -23,18 +23,18 @@ function PlayGlyph() {
 export default function StoreBadges() {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center gap-2 rounded-lg bg-black/80 px-3 py-1.5 text-cream">
+      <div className="flex items-center gap-2 rounded-lg bg-black/80 px-2.5 py-1 text-cream">
         <AppleGlyph />
-        <div className="leading-none">
+        <div className="leading-snug">
           <div className="text-[8px] opacity-80">Download on the</div>
-          <div className="text-[11px] font-medium -mt-0.5">App Store</div>
+          <div className="text-[11px] font-medium">App Store</div>
         </div>
       </div>
-      <div className="flex items-center gap-2 rounded-lg bg-black/80 px-3 py-1.5 text-cream">
+      <div className="flex items-center gap-2 rounded-lg bg-black/80 px-2.5 py-1 text-cream">
         <PlayGlyph />
-        <div className="leading-none">
+        <div className="leading-snug">
           <div className="text-[8px] opacity-80">GET IT ON</div>
-          <div className="text-[11px] font-medium -mt-0.5">Google Play</div>
+          <div className="text-[11px] font-medium">Google Play</div>
         </div>
       </div>
     </div>
