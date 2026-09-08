@@ -84,15 +84,27 @@ export default function Testimonials() {
           ))}
         </div>
         <div className="flex items-center justify-center gap-3 mt-8">
-          {TESTIMONIALS.map((_, i) => (
+          {TESTIMONIALS.map((t, i) => (
             <button
               key={i}
               onClick={() => select(i)}
-              aria-label={`[TESTIMONIAL_${i + 1}_AVATAR]`}
-              className="w-8 h-8 rounded-full overflow-hidden border transition-colors"
-              style={{ borderColor: active === i ? "#FFFFFF" : "rgba(255,255,255,.3)" }}
+              aria-label={t.name}
+              className={`flex items-center h-8 rounded-pill overflow-hidden transition-all duration-300 ease-out ${
+                active === i ? "bg-white/15 pr-4" : ""
+              }`}
             >
-              <Placeholder label="" seed={TESTIMONIAL_AVATARS[i]} sizes="32px" className="w-full h-full rounded-full" />
+              <span
+                className="w-8 h-8 rounded-full overflow-hidden border shrink-0 transition-colors"
+                style={{ borderColor: active === i ? "#FFFFFF" : "rgba(255,255,255,.3)" }}
+              >
+                <Placeholder label="" seed={TESTIMONIAL_AVATARS[i]} sizes="32px" className="w-full h-full rounded-full" />
+              </span>
+              <span
+                className="overflow-hidden whitespace-nowrap text-body-sm text-cream transition-all duration-300 ease-out"
+                style={{ maxWidth: active === i ? 160 : 0, marginLeft: active === i ? 8 : 0 }}
+              >
+                {t.name}
+              </span>
             </button>
           ))}
         </div>

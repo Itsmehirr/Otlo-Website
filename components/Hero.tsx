@@ -24,7 +24,6 @@ const SCATTER_PHOTOS = [
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const videoWrapRef = useRef<HTMLDivElement | null>(null);
-  const copyRef = useRef<HTMLDivElement | null>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
@@ -37,10 +36,26 @@ export default function Hero() {
         const rect = wrap.getBoundingClientRect();
         const total = rect.height - window.innerHeight;
         const progress = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-        const fadeIn = Math.min(1, progress / 0.18);
+        // scattered photos: hidden while the video is still large, then
+        // emerge outward from the shrunk video's center position (where
+        // it ends up once contracted) into their final scattered spots as
+        // it finishes contracting — opacity 0->1 over scrollY ~100->400px,
+        // well after the shrink starts and finishing just before it
+        // completes at 540px (verified live against the source's timing).
+        const fadeIn = Math.min(1, Math.max(0, (window.scrollY - 100) / 300));
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
         photoRefs.current.forEach((el, i) => {
           if (!el) return;
-          el.style.transform = `translateY(${progress * SCATTER_PHOTOS[i].speed}px)`;
+          const photo = SCATTER_PHOTOS[i];
+          const tileLeftPx = (parseFloat(photo.left) / 100) * vw;
+          const tileTopPx = (parseFloat(photo.top) / 100) * vh;
+          const centerOffsetX = vw / 2 - (tileLeftPx + photo.w / 2);
+          const centerOffsetY = vh / 2 - (tileTopPx + photo.h / 2);
+          const emergeX = centerOffsetX * (1 - fadeIn);
+          const emergeY = centerOffsetY * (1 - fadeIn);
+          const parallaxY = progress * photo.speed;
+          el.style.transform = `translate(${emergeX}px, ${parallaxY + emergeY}px) scale(${0.4 + fadeIn * 0.6})`;
           el.style.opacity = String(fadeIn);
         });
 
@@ -54,17 +69,6 @@ export default function Hero() {
           const scale = 1 - shrinkProgress * 0.75;
           videoWrap.style.transform = `scale(${scale})`;
           videoWrap.style.borderRadius = `${shrinkProgress * 28}px`;
-        }
-
-        // hero copy (headline/subhead/buttons): fades out and rises away
-        // over just the first 300px of scroll — much faster than the video
-        // shrink, gone well before it — verified live against the source's
-        // .hero-content (opacity 1->0, translateY 0->-60px, then holds).
-        const copy = copyRef.current;
-        if (copy) {
-          const fadeProgress = Math.min(1, Math.max(0, window.scrollY / 300));
-          copy.style.opacity = String(1 - fadeProgress);
-          copy.style.transform = `translateY(${-60 * fadeProgress}px)`;
         }
       });
     }
@@ -98,14 +102,20 @@ export default function Hero() {
             loop
             playsInline
           />
+          {/* gradient overlay lives inside the same shrinking wrapper as the
+              video (verified against the source: .hero-overlay's parent is
+              .hero-main, not a page-wide sibling) — so once the video shrinks
+              on scroll, the overlay shrinks and clips with it, and the page's
+              own background shows cleanly around it instead of staying
+              tinted full-bleed. */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(29,27,24,.82) 0%, rgba(29,27,24,.45) 40%, rgba(29,27,24,.2) 70%, rgba(29,27,24,.08) 100%)",
+            }}
+          />
         </div>
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(29,27,24,.82) 0%, rgba(29,27,24,.45) 40%, rgba(29,27,24,.2) 70%, rgba(29,27,24,.08) 100%)",
-          }}
-        />
 
         {/* scattered parallax photos, ≥1024px only — invisible at rest, fade
             in across the first 18% of hero scroll like the source */}
@@ -144,11 +154,8 @@ export default function Hero() {
           <StoreBadges />
         </Link>
 
-        {/* copy — fades/rises away on scroll via copyRef above */}
-        <div
-          ref={copyRef}
-          className="relative z-10 flex h-full flex-col items-start justify-end max-w-hero-copy px-6 sm:px-14 pb-24 sm:pb-28"
-        >
+        {/* copy — stays put through the scroll/pin, embedded over the video */}
+        <div className="relative z-10 flex h-full flex-col items-start justify-end max-w-hero-copy px-6 sm:px-14 pb-24 sm:pb-28">
           <h1 className="text-hero font-medium text-cream mb-6">
             <span
               className="block overflow-hidden"

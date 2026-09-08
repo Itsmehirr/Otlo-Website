@@ -14,7 +14,7 @@ import ImageMarquee from "@/components/ImageMarquee";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Placeholder from "@/components/Placeholder";
-import { BREAK_IMAGES, FEATURE_IMAGES, STATS_BG } from "@/lib/stock-media";
+import { BREAK_IMAGES, FEATURE_IMAGES, STATEMENT_BG, STATS_BG } from "@/lib/stock-media";
 
 export default function Home() {
   return (
@@ -72,6 +72,8 @@ export default function Home() {
         <Statement
           eyebrow="For community builders"
           lines={["The event is four hours.", "The community is the other 8,756."]}
+          body="Most tools obsess over the four. Otlo obsesses over the rest — the second Tuesday someone comes back, the DM that turns into a regular, the format that's ready for its second city before you've thought to take it there."
+          seed={STATEMENT_BG}
         />
 
         <ParallaxBreak label="[IMAGE BREAK 1]" seed={BREAK_IMAGES.break1} />

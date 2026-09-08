@@ -66,3 +66,5 @@ export const GALLERY_IMAGES = [
 export const SIGNUP_TESTIMONIAL_IMAGE = "spread-signup-testimonial";
 
 export const CONTROL_BG = "spread-control-bg";
+
+export const STATEMENT_BG = "spread-statement-bg";
