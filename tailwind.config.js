@@ -15,7 +15,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        cream: '#FAF7F4',
+        cream: '#FFFFFF',
         stone: '#F2EDE7',
         sand: '#E6DFD5',
         charcoal: { DEFAULT: '#1D1B18', soft: '#3A3632' },

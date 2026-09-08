@@ -90,7 +90,7 @@ export default function Testimonials() {
               onClick={() => select(i)}
               aria-label={`[TESTIMONIAL_${i + 1}_AVATAR]`}
               className="w-8 h-8 rounded-full overflow-hidden border transition-colors"
-              style={{ borderColor: active === i ? "#FAF7F4" : "rgba(250,247,244,.3)" }}
+              style={{ borderColor: active === i ? "#FFFFFF" : "rgba(255,255,255,.3)" }}
             >
               <Placeholder label="" seed={TESTIMONIAL_AVATARS[i]} sizes="32px" className="w-full h-full rounded-full" />
             </button>

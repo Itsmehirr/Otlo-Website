@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  background: #FAF7F4;
+  background: #FFFFFF;
   color: #1D1B18;
   font-family: var(--font-body), -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -86,7 +86,7 @@ body {
 
 ::selection {
   background: #1D1B18;
-  color: #FAF7F4;
+  color: #FFFFFF;
 }
 
 @keyframes marquee-scroll {
