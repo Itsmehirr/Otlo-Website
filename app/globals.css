@@ -53,15 +53,6 @@ body {
   animation: pulse-dot 2.5s infinite;
 }
 
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-.spin-badge {
-  animation: spin-slow 12s linear infinite;
-}
-.spin-badge:hover {
-  animation-duration: 6s;
-}
 
 @keyframes slide-up-in {
   from { opacity: 0; transform: translateY(24px); }

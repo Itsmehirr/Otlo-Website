@@ -1,9 +1,10 @@
 "use client";
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Placeholder from "./Placeholder";
 import MagneticButton from "./MagneticButton";
 import Link from "next/link";
 import { HERO_SCATTER_PHOTOS, HERO_VIDEO_SRC } from "@/lib/stock-media";
+import StoreBadges from "./StoreBadges";
 
 // approx position/size/parallax-speed for the source's 8 scattered hero photo
 // tiles (hidden below 1024px). Exact source coordinates weren't capturable
@@ -24,7 +25,6 @@ export default function Hero() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const videoWrapRef = useRef<HTMLDivElement | null>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const badgeId = useId();
 
   useEffect(() => {
     let raf = 0;
@@ -117,17 +117,12 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* rotating circular badge with curved text, ≥768px only */}
-        <div className="hidden sm:flex absolute bottom-8 right-8 w-20 h-20 items-center justify-center">
-          <svg viewBox="0 0 100 100" className="spin-badge w-full h-full">
-            <defs>
-              <path id={badgeId} d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-            </defs>
-            <text fontSize="8.5" letterSpacing="2" fill="#FAF7F4" opacity="0.8">
-              <textPath href={`#${badgeId}`}>[BADGE RING TEXT] · [BADGE RING TEXT] ·</textPath>
-            </text>
-            <line x1="42" y1="50" x2="58" y2="50" stroke="#FAF7F4" strokeWidth="1.5" opacity="0.9" />
-          </svg>
+        {/* floating "coming soon" card — transparent/glass, store badges */}
+        <div className="hidden sm:flex absolute bottom-8 right-8 z-20 flex-col items-center gap-3 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-5 py-4 shadow-lg">
+          <span className="rounded-pill bg-white/15 px-3 py-1 text-eyebrow uppercase tracking-widest text-cream">
+            Coming Soon
+          </span>
+          <StoreBadges />
         </div>
 
         {/* copy */}
