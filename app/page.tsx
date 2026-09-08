@@ -10,7 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import ControlSection from "@/components/ControlSection";
 import NichePicker from "@/components/NichePicker";
 import ImageMarquee from "@/components/ImageMarquee";
-import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Placeholder from "@/components/Placeholder";
@@ -62,7 +61,9 @@ export default function Home() {
         </section>
 
         <div className="relative bg-charcoal rounded-2xl mx-3 max-960:mx-2 overflow-hidden">
-          <Placeholder label="[IMAGE STATS BG]" seed={STATS_BG} className="absolute inset-0 rounded-none opacity-30" />
+          <div className="absolute inset-0 opacity-30">
+            <Placeholder label="[IMAGE STATS BG]" seed={STATS_BG} className="w-full h-full rounded-none" />
+          </div>
           <div className="relative">
             <StatsRow />
           </div>
@@ -80,9 +81,11 @@ export default function Home() {
 
         <ImageMarquee />
 
-        <PricingSection />
-
-        <CTASection />
+        {/* "About" in the nav still points to #pricing — retargeted here now
+            that the pricing section is gone, so the link keeps working */}
+        <div id="pricing" className="scroll-mt-24">
+          <CTASection />
+        </div>
       </main>
       <Footer />
     </>

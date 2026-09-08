@@ -51,7 +51,9 @@ export default function Testimonials() {
 
   return (
     <div className="relative min-h-[85vh] max-600:min-h-[65vh] flex items-center justify-center overflow-hidden">
-      <Placeholder label="[IMAGE TESTIMONIAL BG]" seed={TESTIMONIAL_BG} className="absolute inset-0 rounded-none" />
+      <div className="absolute inset-0">
+        <Placeholder label="[IMAGE TESTIMONIAL BG]" seed={TESTIMONIAL_BG} className="w-full h-full rounded-none" />
+      </div>
       <div className="absolute inset-0 bg-charcoal/75" />
       <div className="relative z-10 max-w-testimonial mx-auto px-6 text-center">
         <div className="relative h-[140px] max-600:h-[180px]">

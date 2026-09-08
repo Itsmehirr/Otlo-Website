@@ -49,16 +49,15 @@ export default function FeatureSection({ eyebrow, heading, body, reversed, label
     >
       <div className="m-5">
         <div className="relative w-full" style={{ aspectRatio: "4 / 5" }}>
-          <Placeholder
-            label={labelA}
-            seed={seedA}
-            className={`crossfade-img absolute inset-0 rounded-xl ${swapped ? "hide" : ""}`}
-          />
-          <Placeholder
-            label={labelB}
-            seed={seedB}
-            className={`crossfade-img absolute inset-0 rounded-xl ${swapped ? "" : "hide"}`}
-          />
+          {/* wrapper owns the absolute positioning — Placeholder's own
+              `relative` class otherwise beats a caller's `absolute` in
+              Tailwind's fixed stylesheet order and collapses it to 0 height */}
+          <div className={`crossfade-img absolute inset-0 rounded-xl overflow-hidden ${swapped ? "hide" : ""}`}>
+            <Placeholder label={labelA} seed={seedA} className="w-full h-full rounded-xl" />
+          </div>
+          <div className={`crossfade-img absolute inset-0 rounded-xl overflow-hidden ${swapped ? "" : "hide"}`}>
+            <Placeholder label={labelB} seed={seedB} className="w-full h-full rounded-xl" />
+          </div>
         </div>
       </div>
       <div ref={revealRef} className="reveal-group px-2">

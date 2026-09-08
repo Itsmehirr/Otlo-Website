@@ -35,11 +35,11 @@ export default function DealStack() {
   const visible = [0, 1, 2].map((i) => DEALS[(start + i) % DEALS.length]);
 
   return (
-    <div className="relative mx-auto h-[220px] max-w-deal cursor-pointer" onClick={advance}>
+    <div className="relative mx-auto w-full h-[220px] max-w-deal cursor-pointer" onClick={advance}>
       {visible.map((deal, i) => (
         <div
           key={`${start}-${i}`}
-          className="absolute inset-x-0 rounded-2xl border border-border bg-white p-5 shadow-deal-stack transition-all duration-500 ease-out"
+          className="absolute inset-x-0 top-0 rounded-2xl border border-border bg-white p-5 shadow-deal-stack transition-all duration-500 ease-out"
           style={{
             transform: `translateY(${OFFSETS[i].y}px) scale(${OFFSETS[i].scale})`,
             zIndex: OFFSETS[i].z,
