@@ -24,6 +24,7 @@ const SCATTER_PHOTOS = [
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const videoWrapRef = useRef<HTMLDivElement | null>(null);
+  const copyRef = useRef<HTMLDivElement | null>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
@@ -53,6 +54,17 @@ export default function Hero() {
           const scale = 1 - shrinkProgress * 0.75;
           videoWrap.style.transform = `scale(${scale})`;
           videoWrap.style.borderRadius = `${shrinkProgress * 28}px`;
+        }
+
+        // hero copy (headline/subhead/buttons): fades out and rises away
+        // over just the first 300px of scroll — much faster than the video
+        // shrink, gone well before it — verified live against the source's
+        // .hero-content (opacity 1->0, translateY 0->-60px, then holds).
+        const copy = copyRef.current;
+        if (copy) {
+          const fadeProgress = Math.min(1, Math.max(0, window.scrollY / 300));
+          copy.style.opacity = String(1 - fadeProgress);
+          copy.style.transform = `translateY(${-60 * fadeProgress}px)`;
         }
       });
     }
@@ -132,8 +144,11 @@ export default function Hero() {
           <StoreBadges />
         </Link>
 
-        {/* copy */}
-        <div className="relative z-10 flex h-full flex-col items-start justify-end max-w-hero-copy px-6 sm:px-14 pb-24 sm:pb-28">
+        {/* copy — fades/rises away on scroll via copyRef above */}
+        <div
+          ref={copyRef}
+          className="relative z-10 flex h-full flex-col items-start justify-end max-w-hero-copy px-6 sm:px-14 pb-24 sm:pb-28"
+        >
           <h1 className="text-hero font-medium text-cream mb-6">
             <span
               className="block overflow-hidden"
