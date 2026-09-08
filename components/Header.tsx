@@ -11,10 +11,10 @@ const NAV_LINKS = [
   { href: "#pricing", label: "[NAV 4]" },
 ];
 
-/** Sticky pill header. Logo/nav swap between a "on video" light variant and a
- * "scrolled" cream variant based on a single boolean, toggled by an
- * IntersectionObserver watching a sentinel placed 15% into the hero — the
- * same single threshold the source uses (no per-section variant logic). */
+/** Sticky pill header. The pill stays the same transparent "on video" look
+ * at all times — only the nav links collapse away once scrolled (tracked via
+ * an IntersectionObserver on a sentinel placed 15% into the hero), leaving
+ * just the logo + CTA. */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,22 +37,9 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 flex justify-center pt-4 px-4">
-      <nav
-        className={`flex items-center gap-1 rounded-pill px-2 py-2 max-w-[calc(100vw-32px)] transition-colors duration-300 ${
-          scrolled
-            ? "bg-cream/90 backdrop-blur shadow-nav-scrolled border border-border"
-            : "bg-charcoal/30 backdrop-blur border border-white/10"
-        }`}
-      >
+      <nav className="flex items-center gap-1 rounded-pill px-2 py-2 max-w-[calc(100vw-32px)] bg-charcoal/30 backdrop-blur border border-white/10">
         <Link href="/" className="pl-3 pr-3 flex items-center">
-          <Image
-            src="/logo.svg"
-            alt="Otlo"
-            width={287}
-            height={132}
-            priority
-            className={`h-6 w-auto transition-[filter] duration-300 ${scrolled ? "invert" : ""}`}
-          />
+          <Image src="/logo.svg" alt="Otlo" width={287} height={132} priority className="h-6 w-auto" />
         </Link>
         <div
           className={`hidden sm:flex items-center overflow-hidden whitespace-nowrap transition-[max-width] duration-300 ${
@@ -63,21 +50,13 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className={`rounded-pill px-3 py-2 text-nav whitespace-nowrap transition-colors ${
-                scrolled
-                  ? "text-charcoal hover:bg-stone"
-                  : "text-cream/90 hover:bg-white/10"
-              }`}
+              className="rounded-pill px-3 py-2 text-nav whitespace-nowrap text-cream/90 hover:bg-white/10 transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
-        <MagneticButton
-          href="/signup"
-          variant={scrolled ? "dark" : "light"}
-          className="!px-5 !py-2.5 text-[13px] whitespace-nowrap"
-        >
+        <MagneticButton href="/signup" variant="light" className="!px-5 !py-2.5 text-[13px] whitespace-nowrap">
           <span className="max-600:hidden">[CTA LONG]</span>
           <span className="hidden max-600:inline">[CTA SHORT]</span>
         </MagneticButton>

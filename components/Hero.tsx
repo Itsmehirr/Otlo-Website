@@ -22,6 +22,7 @@ const SCATTER_PHOTOS = [
 
 export default function Hero() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
+  const videoWrapRef = useRef<HTMLDivElement | null>(null);
   const photoRefs = useRef<Array<HTMLDivElement | null>>([]);
   const badgeId = useId();
 
@@ -41,6 +42,18 @@ export default function Hero() {
           el.style.transform = `translateY(${progress * SCATTER_PHOTOS[i].speed}px)`;
           el.style.opacity = String(fadeIn);
         });
+
+        // hero video: shrinks (scale 1 -> 0.25) and rounds (0 -> 28px),
+        // center-anchored, linearly over the first 60% of one viewport
+        // height of scroll, then holds — verified live against the source
+        // (.hero-main's scroll-linked transform/border-radius scrub).
+        const videoWrap = videoWrapRef.current;
+        if (videoWrap) {
+          const shrinkProgress = Math.min(1, Math.max(0, window.scrollY / (0.6 * window.innerHeight)));
+          const scale = 1 - shrinkProgress * 0.75;
+          videoWrap.style.transform = `scale(${scale})`;
+          videoWrap.style.borderRadius = `${shrinkProgress * 28}px`;
+        }
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -56,11 +69,14 @@ export default function Hero() {
       {/* sentinel at 15% of the hero's scroll range — drives Header's scrolled state */}
       <div id="header-trigger" className="absolute left-0 w-full h-px" style={{ top: "15%" }} />
 
-      <div className="sticky top-0 h-screen overflow-hidden rounded-b-2xl">
+      <div className="sticky top-0 h-screen overflow-hidden">
         {/* hero background video — same "cover" oversizing box the source used
             for its third-party video embed, now a real (CC0 stock) clip
             instead of an iframe. */}
-        <div className="absolute inset-0 bg-charcoal">
+        <div
+          ref={videoWrapRef}
+          className="absolute inset-0 bg-charcoal overflow-hidden [will-change:transform,border-radius]"
+        >
           <video
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
             style={{ width: "177.78vh", height: "100vh", minWidth: "100%", minHeight: "56.25vw" }}
