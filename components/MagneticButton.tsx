@@ -33,7 +33,7 @@ export default function MagneticButton({ href, children, variant = "dark", class
   const base =
     variant === "dark"
       ? "bg-charcoal text-cream"
-      : "bg-white text-charcoal";
+      : "bg-white text-charcoal group-hover:text-cream";
 
   return (
     <Link
@@ -44,10 +44,10 @@ export default function MagneticButton({ href, children, variant = "dark", class
       className={`group relative inline-flex items-center justify-center overflow-hidden rounded-pill px-8 py-4 text-nav font-medium transition-transform duration-[400ms] ease-out ${base} ${className}`}
     >
       <span
-        className="absolute inset-0 origin-left scale-x-0 bg-charcoal-soft transition-transform duration-500 ease-out group-hover:scale-x-100"
+        className="absolute inset-y-0 left-0 w-0 bg-charcoal-soft transition-[width] duration-500 ease-out group-hover:w-full"
         aria-hidden
       />
-      <span className="relative">{children}</span>
+      <span className="relative transition-colors duration-300">{children}</span>
     </Link>
   );
 }
