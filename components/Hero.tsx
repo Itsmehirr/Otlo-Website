@@ -117,13 +117,20 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* floating "coming soon" card — transparent/glass, store badges */}
-        <div className="hidden sm:flex absolute bottom-8 right-8 z-20 flex-col items-center gap-2.5 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-3 shadow-lg">
+        {/* floating "coming soon" card — transparent/glass, store badges.
+            Clickable through to signup. It's already in view on load (no
+            real "scroll into it" moment), so it animates in on mount rather
+            than via a scroll IntersectionObserver. */}
+        <Link
+          href="/signup"
+          className="hidden sm:flex absolute bottom-8 right-8 z-20 flex-col items-center gap-2.5 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-3.5 py-3 shadow-lg transition-colors hover:bg-white/15"
+          style={{ animation: "slide-up-in .6s cubic-bezier(.16,1,.3,1) 1.1s both" }}
+        >
           <span className="rounded-pill bg-white/15 px-3 py-1 text-eyebrow uppercase tracking-widest text-cream">
             Coming Soon
           </span>
           <StoreBadges />
-        </div>
+        </Link>
 
         {/* copy */}
         <div className="relative z-10 flex h-full flex-col items-start justify-end max-w-hero-copy px-6 sm:px-14 pb-24 sm:pb-28">
