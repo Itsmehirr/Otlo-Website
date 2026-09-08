@@ -7,8 +7,8 @@
  * photo renders every time rather than a random one per request.
  *
  * Video: a merged montage built from 7 stock clips the user supplied locally
- * (public/video/hero-bg.mp4) — normalized to 1920x1080/25fps, concatenated,
- * and compressed for web delivery (~18.9MB, 78.6s, muted).
+ * (public/video/hero-bg.mp4) — normalized to 1920x1080/25fps, each trimmed
+ * to 3s, concatenated, and compressed for web delivery (~9.9MB, 21s, muted).
  *
  * None of these are sourced from joinspread.app or its third-party embeds.
  */
