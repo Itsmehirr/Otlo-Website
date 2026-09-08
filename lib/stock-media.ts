@@ -6,8 +6,9 @@
  * backed by real photography). Each slot gets a fixed `seed` so the same
  * photo renders every time rather than a random one per request.
  *
- * Video: an MDN-hosted CC0 sample clip (interactive-examples.mdn.mozilla.net)
- * — public-domain footage MDN itself distributes for use in code demos.
+ * Video: a merged montage built from 7 stock clips the user supplied locally
+ * (public/video/hero-bg.mp4) — normalized to 1920x1080/25fps, concatenated,
+ * and compressed for web delivery (~18.9MB, 78.6s, muted).
  *
  * None of these are sourced from joinspread.app or its third-party embeds.
  */
@@ -16,7 +17,7 @@ export function picsum(seed: string, width: number, height: number) {
   return `https://picsum.photos/seed/${seed}/${width}/${height}`;
 }
 
-export const HERO_VIDEO_SRC = "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
+export const HERO_VIDEO_SRC = "/video/hero-bg.mp4";
 
 export const HERO_SCATTER_PHOTOS = [
   "spread-scatter-1",
