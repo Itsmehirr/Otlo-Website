@@ -7,18 +7,35 @@ type Props = {
   eyebrow: string;
   heading: string;
   body: string;
+  /** bolded lead-in + plain rest, closing stat-style line under the body copy */
+  statLead?: string;
+  statRest?: string;
   reversed?: boolean;
   labelA: string;
   labelB: string;
   seedA: string;
   seedB: string;
+  /** optional small demo card rendered under the body copy */
+  demo?: React.ReactNode;
 };
 
 /** Two-column feature section whose image pane crossfades between two stacked
  * placeholders once scrolled to ~40% of viewport center — no sticky/fixed
  * pinning is used, matching the source's actual (simpler-than-assumed)
  * mechanism. */
-export default function FeatureSection({ eyebrow, heading, body, reversed, labelA, labelB, seedA, seedB }: Props) {
+export default function FeatureSection({
+  eyebrow,
+  heading,
+  body,
+  statLead,
+  statRest,
+  reversed,
+  labelA,
+  labelB,
+  seedA,
+  seedB,
+  demo,
+}: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [swapped, setSwapped] = useState(false);
   const revealRef = useReveal<HTMLDivElement>();
@@ -68,6 +85,16 @@ export default function FeatureSection({ eyebrow, heading, body, reversed, label
         <p className="reveal text-body-sm text-muted max-w-[440px]" style={{ ["--i" as string]: 2 }}>
           {body}
         </p>
+        {statLead && (
+          <p className="reveal text-body-sm text-muted max-w-[440px] mt-6 pt-6 border-t border-border" style={{ ["--i" as string]: 3 }}>
+            <span className="text-charcoal font-medium">{statLead}</span> {statRest}
+          </p>
+        )}
+        {demo && (
+          <div className="reveal mt-8 max-w-[440px]" style={{ ["--i" as string]: 4 }}>
+            {demo}
+          </div>
+        )}
       </div>
     </section>
   );
