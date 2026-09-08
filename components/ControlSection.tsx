@@ -37,7 +37,7 @@ export default function ControlSection() {
   const revealRef = useReveal<HTMLDivElement>();
 
   return (
-    <section className="bg-charcoal text-cream rounded-2xl mx-3 max-960:mx-2 my-4 overflow-hidden">
+    <section className="bg-charcoal text-cream rounded-2xl m-4 max-960:m-3 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div ref={revealRef} className="reveal-group px-6 sm:px-14 py-section-md">
           <div className="reveal text-eyebrow uppercase text-cream/60 mb-4">Where we&rsquo;re headed</div>

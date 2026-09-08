@@ -89,7 +89,7 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="relative bg-charcoal rounded-2xl mx-3 max-960:mx-2 overflow-hidden">
+        <div className="relative bg-charcoal rounded-2xl m-4 max-960:m-3 overflow-hidden">
           <div className="absolute inset-0 opacity-30">
             <Placeholder label="[IMAGE STATS BG]" seed={STATS_BG} className="w-full h-full rounded-none" />
           </div>
