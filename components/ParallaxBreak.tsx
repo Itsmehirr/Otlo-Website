@@ -7,7 +7,7 @@ import Placeholder from "./Placeholder";
  * down to an inset rounded card as the section is approached — both driven
  * by scroll position via rAF, matching the source's two independent
  * ease:'none' scrubs. */
-export default function ParallaxBreak({ label }: { label: string }) {
+export default function ParallaxBreak({ label, seed }: { label: string; seed: string }) {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const imgRef = useRef<HTMLDivElement | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
@@ -48,7 +48,7 @@ export default function ParallaxBreak({ label }: { label: string }) {
     <div ref={sectionRef} className="w-full py-2">
       <div ref={wrapRef} className="mx-auto overflow-hidden" style={{ width: "100%", borderRadius: 0 }}>
         <div ref={imgRef} className="w-full h-full">
-          <Placeholder label={label} className="w-full h-[70vh]" />
+          <Placeholder label={label} seed={seed} className="w-full h-[70vh]" />
         </div>
       </div>
     </div>

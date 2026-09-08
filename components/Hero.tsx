@@ -3,6 +3,7 @@ import { useEffect, useId, useRef } from "react";
 import Placeholder from "./Placeholder";
 import MagneticButton from "./MagneticButton";
 import Link from "next/link";
+import { HERO_SCATTER_PHOTOS, HERO_VIDEO_SRC } from "@/lib/stock-media";
 
 // approx position/size/parallax-speed for the source's 8 scattered hero photo
 // tiles (hidden below 1024px). Exact source coordinates weren't capturable
@@ -56,15 +57,18 @@ export default function Hero() {
       <div id="header-trigger" className="absolute left-0 w-full h-px" style={{ top: "15%" }} />
 
       <div className="sticky top-0 h-screen overflow-hidden rounded-b-2xl">
-        {/* hero video placeholder — same "cover" oversizing box the source used
-            for its third-party video embed, no iframe embedded. Dark-toned so
-            the overlaid copy keeps the same contrast the real (dark, moody)
-            video gives it. */}
+        {/* hero background video — same "cover" oversizing box the source used
+            for its third-party video embed, now a real (CC0 stock) clip
+            instead of an iframe. */}
         <div className="absolute inset-0 bg-charcoal">
-          <Placeholder
-            label="[VIDEO PLACEHOLDER HERO BG 16:9]"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 !bg-charcoal-soft !text-cream/40 !border-charcoal-soft"
+          <video
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
             style={{ width: "177.78vh", height: "100vh", minWidth: "100%", minHeight: "56.25vw" }}
+            src={HERO_VIDEO_SRC}
+            autoPlay
+            muted
+            loop
+            playsInline
           />
         </div>
         <div
@@ -87,7 +91,12 @@ export default function Hero() {
               className="absolute"
               style={{ top: p.top, left: p.left, width: p.w, height: p.h, opacity: 0 }}
             >
-              <Placeholder label={`[PHOTO_${i + 1}]`} className="w-full h-full rounded-lg shadow-photo" />
+              <Placeholder
+                label={`[PHOTO_${i + 1}]`}
+                seed={HERO_SCATTER_PHOTOS[i]}
+                sizes={`${p.w}px`}
+                className="w-full h-full rounded-lg shadow-photo"
+              />
             </div>
           ))}
         </div>

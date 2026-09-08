@@ -14,6 +14,7 @@ import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Placeholder from "@/components/Placeholder";
+import { BREAK_IMAGES, FEATURE_IMAGES, STATS_BG } from "@/lib/stock-media";
 
 export default function Home() {
   return (
@@ -30,6 +31,8 @@ export default function Home() {
             body="[HOW SECTION 1 BODY SENTENCE]"
             labelA="[IMAGE STICKY1A 4:5]"
             labelB="[IMAGE STICKY1B 4:5]"
+            seedA={FEATURE_IMAGES.sticky1a}
+            seedB={FEATURE_IMAGES.sticky1b}
           />
           <FeatureSection
             eyebrow="[EYEBROW LABEL]"
@@ -37,11 +40,13 @@ export default function Home() {
             body="[HOW SECTION 2 BODY SENTENCE]"
             labelA="[IMAGE STICKY2A 4:5]"
             labelB="[IMAGE STICKY2B 4:5]"
+            seedA={FEATURE_IMAGES.sticky2a}
+            seedB={FEATURE_IMAGES.sticky2b}
             reversed
           />
         </section>
 
-        <ParallaxBreak label="[IMAGE BREAK 1]" />
+        <ParallaxBreak label="[IMAGE BREAK 1]" seed={BREAK_IMAGES.break1} />
 
         <section id="deal" className="scroll-mt-24 max-w-content mx-auto px-6 py-section-md">
           <div className="text-center mb-12">
@@ -55,13 +60,13 @@ export default function Home() {
         </section>
 
         <div className="relative bg-charcoal rounded-2xl mx-3 max-960:mx-2 overflow-hidden">
-          <Placeholder label="[IMAGE STATS BG]" className="absolute inset-0 rounded-none opacity-30" />
+          <Placeholder label="[IMAGE STATS BG]" seed={STATS_BG} className="absolute inset-0 rounded-none opacity-30" />
           <div className="relative">
             <StatsRow />
           </div>
         </div>
 
-        <ParallaxBreak label="[IMAGE BREAK 2]" />
+        <ParallaxBreak label="[IMAGE BREAK 2]" seed={BREAK_IMAGES.break2} />
 
         <Testimonials />
 

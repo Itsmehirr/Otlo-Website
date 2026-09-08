@@ -10,13 +10,15 @@ type Props = {
   reversed?: boolean;
   labelA: string;
   labelB: string;
+  seedA: string;
+  seedB: string;
 };
 
 /** Two-column feature section whose image pane crossfades between two stacked
  * placeholders once scrolled to ~40% of viewport center — no sticky/fixed
  * pinning is used, matching the source's actual (simpler-than-assumed)
  * mechanism. */
-export default function FeatureSection({ eyebrow, heading, body, reversed, labelA, labelB }: Props) {
+export default function FeatureSection({ eyebrow, heading, body, reversed, labelA, labelB, seedA, seedB }: Props) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [swapped, setSwapped] = useState(false);
   const revealRef = useReveal<HTMLDivElement>();
@@ -49,10 +51,12 @@ export default function FeatureSection({ eyebrow, heading, body, reversed, label
         <div className="relative w-full" style={{ aspectRatio: "4 / 5" }}>
           <Placeholder
             label={labelA}
+            seed={seedA}
             className={`crossfade-img absolute inset-0 rounded-xl ${swapped ? "hide" : ""}`}
           />
           <Placeholder
             label={labelB}
+            seed={seedB}
             className={`crossfade-img absolute inset-0 rounded-xl ${swapped ? "" : "hide"}`}
           />
         </div>

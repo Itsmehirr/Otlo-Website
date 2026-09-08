@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Placeholder from "./Placeholder";
+import { TESTIMONIAL_AVATARS, TESTIMONIAL_BG } from "@/lib/stock-media";
 
 const TESTIMONIALS = [
   { quote: "[TESTIMONIAL 1 QUOTE SENTENCE]", name: "[NAME 1]", meta: "[PLAN LOCATION 1]" },
@@ -31,7 +32,7 @@ export default function Testimonials() {
 
   return (
     <div className="relative min-h-[85vh] max-600:min-h-[65vh] flex items-center justify-center overflow-hidden">
-      <Placeholder label="[IMAGE TESTIMONIAL BG]" className="absolute inset-0 rounded-none" />
+      <Placeholder label="[IMAGE TESTIMONIAL BG]" seed={TESTIMONIAL_BG} className="absolute inset-0 rounded-none" />
       <div className="absolute inset-0 bg-charcoal/75" />
       <div className="relative z-10 max-w-testimonial mx-auto px-6 text-center">
         <div className="relative h-[140px] max-600:h-[180px]">
@@ -70,7 +71,7 @@ export default function Testimonials() {
               className="w-8 h-8 rounded-full overflow-hidden border transition-colors"
               style={{ borderColor: active === i ? "#FAF7F4" : "rgba(250,247,244,.3)" }}
             >
-              <Placeholder label="" className="w-full h-full rounded-full" />
+              <Placeholder label="" seed={TESTIMONIAL_AVATARS[i]} sizes="32px" className="w-full h-full rounded-full" />
             </button>
           ))}
         </div>

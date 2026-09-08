@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import MagneticButton from "./MagneticButton";
 
 const NAV_LINKS = [
-  { href: "#how", label: "[NAV 1]" },
+  { href: "#how", label: "Communities" },
   { href: "#deal", label: "[NAV 2]" },
   { href: "#niches", label: "[NAV 3]" },
   { href: "#pricing", label: "[NAV 4]" },
@@ -43,11 +44,15 @@ export default function Header() {
             : "bg-charcoal/30 backdrop-blur border border-white/10"
         }`}
       >
-        <Link
-          href="/"
-          className={`px-3 text-nav font-medium whitespace-nowrap ${scrolled ? "text-charcoal" : "text-cream"}`}
-        >
-          [LOGO]
+        <Link href="/" className="pl-3 pr-3 flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="Otlo"
+            width={287}
+            height={132}
+            priority
+            className={`h-6 w-auto transition-[filter] duration-300 ${scrolled ? "invert" : ""}`}
+          />
         </Link>
         <div
           className={`hidden sm:flex items-center overflow-hidden whitespace-nowrap transition-[max-width] duration-300 ${

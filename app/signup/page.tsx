@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import Placeholder from "@/components/Placeholder";
+import { SIGNUP_TESTIMONIAL_IMAGE } from "@/lib/stock-media";
 
 /** /signup — structure verified read-only via Playwright (2 name fields side
  * by side, email, 2 selects, submit, social row, terms line, login link) and
@@ -83,7 +84,11 @@ export default function SignupPage() {
       </div>
 
       <div className="hidden lg:block relative lg:sticky lg:top-0 lg:h-screen">
-        <Placeholder label="[IMAGE SIGNUP TESTIMONIAL]" className="w-full h-full rounded-none" />
+        <Placeholder
+          label="[IMAGE SIGNUP TESTIMONIAL]"
+          seed={SIGNUP_TESTIMONIAL_IMAGE}
+          className="w-full h-full rounded-none"
+        />
       </div>
     </main>
   );

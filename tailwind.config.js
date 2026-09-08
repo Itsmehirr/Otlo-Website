@@ -23,6 +23,7 @@ module.exports = {
         border: '#DDD6CC',
         positive: { DEFAULT: '#3D6B4F', bg: 'rgba(61,107,79,0.06)' },
         brand: '#E63222',
+        accent: '#205BFF',
       },
       fontFamily: {
         body: ['var(--font-body)', '-apple-system', 'sans-serif'],

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 /** Page preloader: incrementing numeric counter + fill bar, fade-out, then a
  * full-viewport color curtain slides up to reveal the page. Blocks scroll
@@ -39,14 +40,16 @@ export default function Preloader() {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brand text-cream transition-opacity duration-300"
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-accent text-cream transition-opacity duration-300"
       style={{
         opacity: phase === "fading" ? 0 : 1,
         transform: phase === "curtain" ? "translateY(-100%)" : "translateY(0)",
         transition: phase === "curtain" ? "transform .7s cubic-bezier(.22,1,.36,1)" : "opacity .3s ease",
       }}
     >
-      <div className="text-nav font-medium tracking-tight mb-6">[LOGO MARK]</div>
+      <div className="mb-6">
+        <Image src="/logo.svg" alt="Otlo" width={287} height={132} priority className="h-8 w-auto" />
+      </div>
       <div className="font-mono text-mono-sm tabular-nums mb-3">{String(count).padStart(2, "0")}</div>
       <div className="w-40 h-px bg-cream/30 overflow-hidden">
         <div className="h-full bg-cream" style={{ width: `${count}%` }} />
