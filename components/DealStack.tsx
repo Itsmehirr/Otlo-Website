@@ -1,0 +1,57 @@
+"use client";
+import { useEffect, useState } from "react";
+
+// sample local data standing in for the source's 5-item deal array
+const DEALS = [
+  { title: "[DEAL 1 TITLE]", stat: "[DEAL 1 PROFIT]" },
+  { title: "[DEAL 2 TITLE]", stat: "[DEAL 2 PROFIT]" },
+  { title: "[DEAL 3 TITLE]", stat: "[DEAL 3 PROFIT]" },
+  { title: "[DEAL 4 TITLE]", stat: "[DEAL 4 PROFIT]" },
+  { title: "[DEAL 5 TITLE]", stat: "[DEAL 5 PROFIT]" },
+];
+
+const OFFSETS = [
+  { scale: 1, y: 12, z: 3 },
+  { scale: 0.96, y: -14, z: 2 },
+  { scale: 0.92, y: -40, z: 1 },
+];
+
+/** Auto-cycling 3-card stack: front card slides out and is retired, the
+ * remaining two shift forward, a new one fades in behind — advances every
+ * 4s, or immediately (with timer reset) on click. */
+export default function DealStack() {
+  const [start, setStart] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => setStart((s) => (s + 1) % DEALS.length), 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  function advance() {
+    setStart((s) => (s + 1) % DEALS.length);
+  }
+
+  const visible = [0, 1, 2].map((i) => DEALS[(start + i) % DEALS.length]);
+
+  return (
+    <div className="relative mx-auto h-[220px] max-w-deal cursor-pointer" onClick={advance}>
+      {visible.map((deal, i) => (
+        <div
+          key={`${start}-${i}`}
+          className="absolute inset-x-0 rounded-2xl border border-border bg-white p-5 shadow-deal-stack transition-all duration-500 ease-out"
+          style={{
+            transform: `translateY(${OFFSETS[i].y}px) scale(${OFFSETS[i].scale})`,
+            zIndex: OFFSETS[i].z,
+          }}
+        >
+          <div className="flex items-center justify-between mb-3">
+            <span className="pulse-dot w-1.5 h-1.5 rounded-full bg-positive" />
+            <span className="font-mono text-mono-xs text-muted">[LIVE LABEL]</span>
+          </div>
+          <div className="text-body-sm font-medium mb-2">{deal.title}</div>
+          <div className="font-mono text-mono-md text-positive">{deal.stat}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
