@@ -2,6 +2,7 @@ import Preloader from "@/components/Preloader";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import FeatureSection from "@/components/FeatureSection";
+import Statement from "@/components/Statement";
 import ChatCard from "@/components/ChatCard";
 import DealStack from "@/components/DealStack";
 import StatsRow from "@/components/StatsRow";
@@ -44,6 +45,11 @@ export default function Home() {
             reversed
           />
         </section>
+
+        <Statement
+          eyebrow="For community builders"
+          lines={["The event is four hours.", "The community is the other 8,756."]}
+        />
 
         <ParallaxBreak label="[IMAGE BREAK 1]" seed={BREAK_IMAGES.break1} />
 

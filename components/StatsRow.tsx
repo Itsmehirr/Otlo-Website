@@ -28,7 +28,15 @@ function Stat({ target, prefix, suffix, label }: (typeof STATS)[number]) {
 /** 4 stat counters, count up 0→target once the row is ~82% into view. */
 export default function StatsRow() {
   return (
-    <div className="max-w-content mx-auto px-6 py-section-md">
+    <div className="max-w-content mx-auto px-6 py-section-lg max-960:py-section-md">
+      <div className="text-center mb-14 max-960:mb-10">
+        <p className="text-h2-sm font-medium text-cream max-w-[640px] mx-auto">
+          &ldquo;It felt like a great turnout&rdquo; is not a metric. It&rsquo;s a memory.
+        </p>
+        <p className="text-body-sm text-cream/60 mt-4">
+          The number you&rsquo;ve never had for the thing you always knew.
+        </p>
+      </div>
       <div className="grid grid-cols-4 max-960:grid-cols-2 max-600:grid-cols-2 gap-6 max-960:gap-4 max-600:gap-3">
         {STATS.map((s) => (
           <Stat key={s.label} {...s} />
