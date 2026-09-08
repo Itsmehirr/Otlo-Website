@@ -2,12 +2,28 @@
 import Link from "next/link";
 import { useReveal } from "@/hooks/useReveal";
 
-// placeholder prices preserve the source's 2-digit format ($29/$49/$99)
-// without reproducing the real figures
+// Plan names and features are real; prices stay placeholders — Otlo's actual
+// pricing is marked [OPEN]/undecided in the brand doc (charge the side with
+// money, keep the builder tier a genuinely usable free/low entry point).
 const PLANS = [
-  { name: "[PLAN 1 NAME]", price: "$[PRICE 1]", features: ["[FEATURE 1 1]", "[FEATURE 1 2]", "[FEATURE 1 3]"], popular: false },
-  { name: "[PLAN 2 NAME]", price: "$[PRICE 2]", features: ["[FEATURE 2 1]", "[FEATURE 2 2]", "[FEATURE 2 3]", "[FEATURE 2 4]"], popular: true },
-  { name: "[PLAN 3 NAME]", price: "$[PRICE 3]", features: ["[FEATURE 3 1]", "[FEATURE 3 2]", "[FEATURE 3 3]"], popular: false },
+  {
+    name: "Starter",
+    price: "$[PRICE 1]",
+    features: ["One room, no member ceiling", "Community Discovery", "Basic event intelligence"],
+    popular: false,
+  },
+  {
+    name: "Host",
+    price: "$[PRICE 2]",
+    features: ["Everything in Starter", "Member intelligence", "Engagement tools", "Marketplace access"],
+    popular: true,
+  },
+  {
+    name: "Network",
+    price: "$[PRICE 3]",
+    features: ["Everything in Host", "Event IP", "Multi-city replication", "Brand & sponsorship tools"],
+    popular: false,
+  },
 ];
 
 export default function PricingSection() {
@@ -16,8 +32,10 @@ export default function PricingSection() {
   return (
     <div id="pricing" ref={revealRef} className="reveal-group max-w-content mx-auto px-6 py-section-md scroll-mt-24">
       <div className="reveal text-center mb-14">
-        <div className="text-eyebrow uppercase text-muted mb-4">[EYEBROW LABEL]</div>
-        <h2 className="text-h2-sm font-medium">[PRICING SECTION HEADING]</h2>
+        <div className="text-eyebrow uppercase text-muted mb-4">Pricing</div>
+        <h2 className="text-h2-sm font-medium max-w-[500px] mx-auto">
+          Charge the side with money. Serve the side without it.
+        </h2>
       </div>
       <div className="grid grid-cols-3 max-600:grid-cols-1 gap-4">
         {PLANS.map((plan, i) => (
@@ -31,13 +49,13 @@ export default function PricingSection() {
             style={{ ["--i" as string]: i }}
           >
             {plan.popular && (
-              <div className="text-eyebrow uppercase text-cream/70 mb-3">[MOST POPULAR BADGE]</div>
+              <div className="text-eyebrow uppercase text-cream/70 mb-3">Most builders start here</div>
             )}
             <div className={`text-nav font-medium mb-2 ${plan.popular ? "text-cream" : ""}`}>{plan.name}</div>
             <div className="font-mono text-mono-lg mb-6">
               {plan.price}
               <span className={`text-body-sm font-sans ${plan.popular ? "text-cream/60" : "text-muted"}`}>
-                [PER MONTH SUFFIX]
+                /mo
               </span>
             </div>
             <ul className="flex flex-col gap-3 mb-8">
@@ -56,7 +74,7 @@ export default function PricingSection() {
                 plan.popular ? "bg-cream text-charcoal" : "bg-charcoal text-cream"
               }`}
             >
-              [PLAN CTA LABEL]
+              Get early access
             </Link>
           </div>
         ))}

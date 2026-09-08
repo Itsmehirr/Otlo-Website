@@ -1,21 +1,22 @@
 "use client";
 import { useCountUp } from "@/hooks/useCountUp";
 
-// placeholder targets preserve each stat's original digit-count/suffix
-// format (1-digit / 2-digit+% / 2-digit+"hrs" / 1-2-digit+"s") without
-// reproducing the source's real figures
+// real, sourced industry figures (not Otlo's own metrics — the company is
+// pre-launch) — see the otlo-writing skill's evidence-pack.md. [E] evidenced,
+// [P] projection.
 const STATS = [
-  { target: 9, suffix: "", label: "[STAT 1 LABEL]" },
-  { target: 47, suffix: "%", label: "[STAT 2 LABEL]" },
-  { target: 24, suffix: "hrs", label: "[STAT 3 LABEL]" },
-  { target: 8, suffix: "s", label: "[STAT 4 LABEL]" },
+  { target: 2000, prefix: "", suffix: "", label: "WhatsApp's hard cap on a community" },
+  { target: 24, prefix: "", suffix: "%", label: "of community teams can prove their value" },
+  { target: 130, prefix: "$", suffix: "B", label: "projected experiential ad spend by 2025" },
+  { target: 1300, prefix: "", suffix: "+", label: "TV formats licensed worldwide — live events: zero" },
 ];
 
-function Stat({ target, suffix, label }: (typeof STATS)[number]) {
+function Stat({ target, prefix, suffix, label }: (typeof STATS)[number]) {
   const { ref, value } = useCountUp(target);
   return (
     <div className="text-center">
       <span ref={ref} className="font-mono text-mono-lg text-cream tabular-nums">
+        {prefix}
         {value}
         {suffix}
       </span>
@@ -27,10 +28,15 @@ function Stat({ target, suffix, label }: (typeof STATS)[number]) {
 /** 4 stat counters, count up 0→target once the row is ~82% into view. */
 export default function StatsRow() {
   return (
-    <div className="grid grid-cols-4 max-960:grid-cols-2 max-600:grid-cols-2 gap-6 max-960:gap-4 max-600:gap-3 max-w-content mx-auto px-6 py-section-md">
-      {STATS.map((s) => (
-        <Stat key={s.label} {...s} />
-      ))}
+    <div className="max-w-content mx-auto px-6 py-section-md">
+      <div className="grid grid-cols-4 max-960:grid-cols-2 max-600:grid-cols-2 gap-6 max-960:gap-4 max-600:gap-3">
+        {STATS.map((s) => (
+          <Stat key={s.label} {...s} />
+        ))}
+      </div>
+      <div className="text-center text-mono-xs font-mono text-cream/40 mt-8">
+        Sources: CMX 2024–25, FRAPA, EY-Parthenon–BookMyShow 2026
+      </div>
     </div>
   );
 }

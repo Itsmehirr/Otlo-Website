@@ -9,8 +9,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "[SITE TITLE PLACEHOLDER]",
-  description: "[SITE META DESCRIPTION PLACEHOLDER]",
+  title: "Otlo — Where communities own their ground",
+  description:
+    "Otlo is a community intelligence platform for the people who build and run communities — the audience, the data, the format, and the ground, instead of renting it from platforms that were never built for belonging.",
 };
 
 export default function RootLayout({

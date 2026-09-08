@@ -3,11 +3,30 @@ import { useEffect, useRef, useState } from "react";
 import Placeholder from "./Placeholder";
 import { TESTIMONIAL_AVATARS, TESTIMONIAL_BG } from "@/lib/stock-media";
 
+// ILLUSTRATIVE placeholder testimonials — Otlo is pre-launch and has no real
+// customer quotes yet. Swap every line for a real, attributed quote before
+// this ships publicly; do not launch with these as-is.
 const TESTIMONIALS = [
-  { quote: "[TESTIMONIAL 1 QUOTE SENTENCE]", name: "[NAME 1]", meta: "[PLAN LOCATION 1]" },
-  { quote: "[TESTIMONIAL 2 QUOTE SENTENCE]", name: "[NAME 2]", meta: "[PLAN LOCATION 2]" },
-  { quote: "[TESTIMONIAL 3 QUOTE SENTENCE]", name: "[NAME 3]", meta: "[PLAN LOCATION 3]" },
-  { quote: "[TESTIMONIAL 4 QUOTE SENTENCE]", name: "[NAME 4]", meta: "[PLAN LOCATION 4]" },
+  {
+    quote: "The WhatsApp cap hit right when our Saturday attendance did. Now the room remembers who came three weeks running — I don't have to.",
+    name: "[PLACEHOLDER NAME]",
+    meta: "Run Club Founder · Bandra",
+  },
+  {
+    quote: "We run the same format in four cities now. City two started from zero. City four didn't.",
+    name: "[PLACEHOLDER NAME]",
+    meta: "Network Builder · Multi-city",
+  },
+  {
+    quote: "My community used to live in my DMs. It's mine now — the list, the data, all of it.",
+    name: "[PLACEHOLDER NAME]",
+    meta: "Creator Collective · Mumbai",
+  },
+  {
+    quote: "Forty chapters, one dashboard. I used to find out a chapter was struggling a year too late.",
+    name: "[PLACEHOLDER NAME]",
+    meta: "Alumni Association · Pan-India",
+  },
 ];
 
 /** Testimonial rotator over a background image: auto-advances every 5s,

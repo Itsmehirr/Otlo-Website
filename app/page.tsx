@@ -26,18 +26,18 @@ export default function Home() {
 
         <section id="how" className="scroll-mt-24">
           <FeatureSection
-            eyebrow="[EYEBROW LABEL]"
-            heading="[HOW SECTION 1 HEADING]"
-            body="[HOW SECTION 1 BODY SENTENCE]"
+            eyebrow="The street"
+            heading="People find you before you've met them."
+            body="Your community shouldn't depend on a feed built for cat videos. Otlo surfaces the right room to the right person — searchable, local, built for exactly this kind of gathering."
             labelA="[IMAGE STICKY1A 4:5]"
             labelB="[IMAGE STICKY1B 4:5]"
             seedA={FEATURE_IMAGES.sticky1a}
             seedB={FEATURE_IMAGES.sticky1b}
           />
           <FeatureSection
-            eyebrow="[EYEBROW LABEL]"
-            heading="[HOW SECTION 2 HEADING]"
-            body="[HOW SECTION 2 BODY SENTENCE]"
+            eyebrow="Your ground"
+            heading="The room, without the 2,000-person ceiling."
+            body="No exposed phone numbers. No invite link that outlives its intent. Export always works — if leaving Otlo were ever hard, we'd have already lost the plot."
             labelA="[IMAGE STICKY2A 4:5]"
             labelB="[IMAGE STICKY2B 4:5]"
             seedA={FEATURE_IMAGES.sticky2a}
@@ -50,8 +50,10 @@ export default function Home() {
 
         <section id="deal" className="scroll-mt-24 max-w-content mx-auto px-6 py-section-md">
           <div className="text-center mb-12">
-            <div className="text-eyebrow uppercase text-muted mb-4">[EYEBROW LABEL]</div>
-            <h2 className="text-h2-sm font-medium">[DEAL SECTION HEADING]</h2>
+            <div className="text-eyebrow uppercase text-muted mb-4">For brands</div>
+            <h2 className="text-h2-sm font-medium max-w-[560px] mx-auto">
+              Where brands come for belonging instead of impressions.
+            </h2>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <ChatCard />

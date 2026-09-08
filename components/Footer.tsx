@@ -7,13 +7,13 @@ export default function Footer() {
       <Image src="/logo.svg" alt="Otlo" width={287} height={132} className="h-5 w-auto invert" />
       <div className="flex items-center gap-6">
         <Link href="/terms" className="hover:text-charcoal transition-colors">
-          [FOOTER LINK TERMS]
+          Terms
         </Link>
         <Link href="/privacy" className="hover:text-charcoal transition-colors">
-          [FOOTER LINK PRIVACY]
+          Privacy
         </Link>
       </div>
-      <div>[FOOTER COPYRIGHT LINE]</div>
+      <div>© 2026 Otlo. Communities own their ground.</div>
     </footer>
   );
 }

@@ -12,10 +12,12 @@ export default function SignupPage() {
     <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
       <div className="flex flex-col justify-center px-6 sm:px-14 py-16 max-w-[520px] mx-auto w-full">
         <Link href="/" className="anim d1 text-body-sm text-muted mb-10 inline-flex items-center gap-2">
-          ← [BACK TO HOME]
+          ← Back to home
         </Link>
-        <h1 className="anim d2 text-h2-sm font-medium mb-2">[SIGNUP HEADING]</h1>
-        <p className="anim d3 text-body-sm text-muted mb-8">[SIGNUP SUBHEADING SENTENCE]</p>
+        <h1 className="anim d2 text-h2-sm font-medium mb-2">Let&rsquo;s get your room set up.</h1>
+        <p className="anim d3 text-body-sm text-muted mb-8">
+          Early access rolls out city by city. Tell us who you are and we&rsquo;ll let you know when it&rsquo;s your turn.
+        </p>
 
         <form
           onSubmit={(e) => e.preventDefault()}
@@ -25,20 +27,20 @@ export default function SignupPage() {
             <input
               type="text"
               required
-              placeholder="[FIRST NAME PLACEHOLDER]"
+              placeholder="First name"
               className="rounded-xl border border-border bg-stone/50 px-4 py-3.5 text-body-sm outline-none focus:border-charcoal focus:shadow-[0_0_0_3px_rgba(29,27,24,.08)] transition"
             />
             <input
               type="text"
               required
-              placeholder="[LAST NAME PLACEHOLDER]"
+              placeholder="Last name"
               className="rounded-xl border border-border bg-stone/50 px-4 py-3.5 text-body-sm outline-none focus:border-charcoal focus:shadow-[0_0_0_3px_rgba(29,27,24,.08)] transition"
             />
           </div>
           <input
             type="email"
             required
-            placeholder="[EMAIL PLACEHOLDER]"
+            placeholder="Email"
             className="anim d4 rounded-xl border border-border bg-stone/50 px-4 py-3.5 text-body-sm outline-none focus:border-charcoal focus:shadow-[0_0_0_3px_rgba(29,27,24,.08)] transition"
           />
           <select
@@ -46,40 +48,48 @@ export default function SignupPage() {
             defaultValue=""
             className="anim d5 rounded-xl border border-border bg-stone/50 px-4 py-3.5 text-body-sm outline-none focus:border-charcoal transition"
           >
-            <option value="" disabled>[SELECT 1 PLACEHOLDER]</option>
-            <option>[SELECT 1 OPTION A]</option>
-            <option>[SELECT 1 OPTION B]</option>
+            <option value="" disabled>I&rsquo;m a...</option>
+            <option>Club Owner</option>
+            <option>Network Builder</option>
+            <option>Creator Collective</option>
+            <option>Brand Community Manager</option>
+            <option>Social Curator</option>
+            <option>Org / Association</option>
           </select>
           <select
             defaultValue=""
             className="anim d6 rounded-xl border border-border bg-stone/50 px-4 py-3.5 text-body-sm outline-none focus:border-charcoal transition"
           >
-            <option value="" disabled>[SELECT 2 PLACEHOLDER OPTIONAL]</option>
-            <option>[SELECT 2 OPTION A]</option>
-            <option>[SELECT 2 OPTION B]</option>
+            <option value="" disabled>Which city? (optional)</option>
+            <option>Mumbai</option>
+            <option>Bengaluru</option>
+            <option>Delhi NCR</option>
+            <option>Other</option>
           </select>
           <button
             type="submit"
             className="anim d7 rounded-pill bg-charcoal text-cream px-6 py-3.5 text-nav font-medium mt-2"
           >
-            [SUBMIT BUTTON LABEL]
+            Get early access
           </button>
         </form>
 
         <div className="anim d7 flex items-center gap-3 my-6">
           <div className="h-px bg-border flex-1" />
-          <span className="text-body-sm text-muted">[DIVIDER LABEL]</span>
+          <span className="text-body-sm text-muted">or</span>
           <div className="h-px bg-border flex-1" />
         </div>
 
         <div className="anim d8 flex flex-col gap-3">
-          <button className="rounded-pill border border-border px-6 py-3 text-nav">[SOCIAL LOGIN 1]</button>
-          <button className="rounded-pill border border-border px-6 py-3 text-nav">[SOCIAL LOGIN 2]</button>
+          <button className="rounded-pill border border-border px-6 py-3 text-nav">Continue with Google</button>
+          <button className="rounded-pill border border-border px-6 py-3 text-nav">Continue with Apple</button>
         </div>
 
-        <p className="anim d9 text-body-sm text-muted-light mt-8">[TERMS DISCLAIMER SENTENCE]</p>
+        <p className="anim d9 text-body-sm text-muted-light mt-8">
+          By requesting access, you agree to Otlo&rsquo;s Terms and Privacy Policy.
+        </p>
         <p className="anim d9 text-body-sm text-muted mt-2">
-          [LOGIN PROMPT] <Link href="/signup" className="text-charcoal underline">[LOGIN LINK LABEL]</Link>
+          Already on the list? <Link href="/signup" className="text-charcoal underline">Sign in</Link>
         </p>
       </div>
 

@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 
-// sample local data standing in for the source's 5-item deal array
+// illustrative sample rooms — not real Otlo data — showing brands the kind
+// of room they'd see when browsing sponsorship-ready gatherings
 const DEALS = [
-  { title: "[DEAL 1 TITLE]", stat: "[DEAL 1 PROFIT]" },
-  { title: "[DEAL 2 TITLE]", stat: "[DEAL 2 PROFIT]" },
-  { title: "[DEAL 3 TITLE]", stat: "[DEAL 3 PROFIT]" },
-  { title: "[DEAL 4 TITLE]", stat: "[DEAL 4 PROFIT]" },
-  { title: "[DEAL 5 TITLE]", stat: "[DEAL 5 PROFIT]" },
+  { title: "Tuesday Run Club — Bandra", stat: "34 regulars" },
+  { title: "Founders' Table — Koramangala", stat: "18, invite-only" },
+  { title: "Night Market Collective — Indiranagar", stat: "120 / weekend" },
+  { title: "Supper Club — HSR Layout", stat: "12 seats, always full" },
+  { title: "Creator Meetup — Andheri", stat: "60 regulars" },
 ];
 
 const OFFSETS = [
@@ -46,7 +47,7 @@ export default function DealStack() {
         >
           <div className="flex items-center justify-between mb-3">
             <span className="pulse-dot w-1.5 h-1.5 rounded-full bg-positive" />
-            <span className="font-mono text-mono-xs text-muted">[LIVE LABEL]</span>
+            <span className="font-mono text-mono-xs text-muted">LIVE</span>
           </div>
           <div className="text-body-sm font-medium mb-2">{deal.title}</div>
           <div className="font-mono text-mono-md text-positive">{deal.stat}</div>

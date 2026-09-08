@@ -3,16 +3,28 @@ import { useState } from "react";
 import { useReveal } from "@/hooks/useReveal";
 
 const TABS = [
-  { label: "[TAB 1 LABEL]", soon: false, desc: "[TAB 1 DESCRIPTION SENTENCE]" },
-  { label: "[TAB 2 LABEL]", soon: true, desc: "[TAB 2 DESCRIPTION SENTENCE]" },
-  { label: "[TAB 3 LABEL]", soon: true, desc: "[TAB 3 DESCRIPTION SENTENCE]" },
+  {
+    label: "Discovery",
+    soon: false,
+    desc: "The street outside your door. People find your room before they've met you.",
+  },
+  {
+    label: "Marketplace",
+    soon: true,
+    desc: "Chef, photographer, forty chairs, someone to hold the door — sourced in your city, not your contacts list.",
+  },
+  {
+    label: "Event IP",
+    soon: true,
+    desc: "Your format, held. Replicate it, licence it, or just keep it.",
+  },
 ];
 
 const STEPS = [
-  { num: "01", label: "[STEP 1 LABEL]" },
-  { num: "02", label: "[STEP 2 LABEL]" },
-  { num: "03", label: "[STEP 3 LABEL]" },
-  { num: "04", label: "[STEP 4 LABEL]" },
+  { num: "01", label: "Gather your people" },
+  { num: "02", label: "They find you" },
+  { num: "03", label: "The gathering compounds" },
+  { num: "04", label: "Take it to the next city" },
 ];
 
 /** Dark "control" section: 3-way tab toggle bar (2 tabs carry a SOON badge)
@@ -27,8 +39,8 @@ export default function ControlSection() {
       <div ref={revealRef} className="reveal-group max-w-content mx-auto px-6 sm:px-14 py-section-md">
         <div className="reveal grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-14">
           <div>
-            <div className="text-eyebrow uppercase text-cream/60 mb-4">[EYEBROW LABEL]</div>
-            <h2 className="text-h2-sm font-medium">[CONTROL SECTION HEADING]</h2>
+            <div className="text-eyebrow uppercase text-cream/60 mb-4">The arc</div>
+            <h2 className="text-h2-sm font-medium">Gather. Get found. Compound.</h2>
           </div>
           <div>
             <div className="flex gap-2 mb-6 flex-wrap">
@@ -41,7 +53,7 @@ export default function ControlSection() {
                   }`}
                 >
                   {tab.label}
-                  {tab.soon && <span className="ml-1.5 text-[9px] opacity-50 align-super">[SOON]</span>}
+                  {tab.soon && <span className="ml-1.5 text-[9px] opacity-50 align-super">SOON</span>}
                 </button>
               ))}
             </div>

@@ -139,22 +139,25 @@ export default function Hero() {
               className="block overflow-hidden"
               style={{ animation: "word-in .8s cubic-bezier(.16,1,.3,1) .3s both" }}
             >
-              [H1 HERO TITLE LINE 1]
+              You built the room.
             </span>
             <span
               className="block overflow-hidden"
               style={{ animation: "word-in .8s cubic-bezier(.16,1,.3,1) .38s both" }}
             >
-              [H1 HERO TITLE LINE 2]
+              They kept the keys.
             </span>
           </h1>
-          <p className="text-body-sm text-cream/75 max-w-[420px] mb-8">[HERO SUBHEAD SENTENCE]</p>
+          <p className="text-body-sm text-cream/75 max-w-[420px] mb-8">
+            Your members, your data, your format. Otlo is where communities own their ground —
+            not rent it from an app that was never built for belonging.
+          </p>
           <div className="flex items-center gap-5">
             <MagneticButton href="/signup" variant="light">
-              [HERO CTA PRIMARY LABEL]
+              Claim your ground
             </MagneticButton>
             <Link href="#how" className="text-nav text-cream/85 hover:text-cream transition-colors">
-              [HERO CTA SECONDARY LABEL] →
+              See how it works →
             </Link>
           </div>
         </div>
