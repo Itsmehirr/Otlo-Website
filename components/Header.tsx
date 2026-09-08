@@ -6,9 +6,9 @@ import MagneticButton from "./MagneticButton";
 
 const NAV_LINKS = [
   { href: "#how", label: "Communities" },
-  { href: "#deal", label: "[NAV 2]" },
-  { href: "#niches", label: "[NAV 3]" },
-  { href: "#pricing", label: "[NAV 4]" },
+  { href: "#deal", label: "Brands" },
+  { href: "#niches", label: "Events" },
+  { href: "#pricing", label: "About" },
 ];
 
 /** Sticky pill header. The pill stays the same transparent "on video" look
@@ -57,8 +57,7 @@ export default function Header() {
           ))}
         </div>
         <MagneticButton href="/signup" variant="light" className="!px-5 !py-2.5 text-[13px] whitespace-nowrap">
-          <span className="max-600:hidden">[CTA LONG]</span>
-          <span className="hidden max-600:inline">[CTA SHORT]</span>
+          Sign In
         </MagneticButton>
       </nav>
     </header>
